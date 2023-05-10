@@ -15,12 +15,16 @@ class GenreModel : Serializable {
 
     @SerializedName("picture_small")
     var pictureSmall: String? = null
+
     @SerializedName("picture_medium")
     var pictureMedium: String? = null
+
     @SerializedName("picture_big")
     var pictureBig: String? = null
+
     @SerializedName("picture_xl")
     var pictureXl: String? = null
+
     @SerializedName("type")
     var type: String? = null
 

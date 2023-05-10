@@ -7,9 +7,8 @@ import com.nsicyber.deezerpractice.models.ArrayGenreModel
 import retrofit2.Call
 import retrofit2.http.*
 
-//            var BASE_URL = "https://api.deezer.com"
+//var BASE_URL = "https://api.deezer.com"
 interface RetrofitInterface {
-
 
     @GET("/genre")
     fun getAllGenres(): Call<ArrayGenreModel?>

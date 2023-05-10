@@ -2,6 +2,7 @@ package com.nsicyber.deezerpractice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.viewpager2.widget.ViewPager2
 import com.nsicyber.deezerpractice.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,4 +17,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 }

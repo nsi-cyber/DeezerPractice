@@ -41,7 +41,6 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:text="@string/lorem_ipsum" />
+        android:padding="16dp" />
 
 </LinearLayout>

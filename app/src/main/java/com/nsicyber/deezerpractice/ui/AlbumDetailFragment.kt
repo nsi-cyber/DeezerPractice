@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,20 +18,24 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.nsicyber.deezerpractice.R
+import com.nsicyber.deezerpractice.components.ArtistComponent
 import com.nsicyber.deezerpractice.components.MusicComponent
 import com.nsicyber.deezerpractice.databinding.ActivityMainBinding
 import com.nsicyber.deezerpractice.models.AlbumModel
+import com.nsicyber.deezerpractice.models.ArrayArtistModel
+import com.nsicyber.deezerpractice.models.ArtistModel
 import com.nsicyber.deezerpractice.models.MusicModel
+import com.nsicyber.deezerpractice.network.RetrofitCallback
+import com.nsicyber.deezerpractice.network.RetrofitClient
 import com.nsicyber.deezerpractice.utils.Parser
 import com.nsicyber.deezerpractice.utils.loadUrlRadius
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AlbumDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 
 class AlbumDetailFragment : Fragment() {
+
     private lateinit var collapsing_toolbar_layout: CollapsingToolbarLayout
     private lateinit var image_view: ImageView
     private lateinit var recyclerView: RecyclerView
@@ -47,7 +52,6 @@ class AlbumDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         var view = inflater.inflate(R.layout.fragment_album_detail, container, false)
-
         collapsing_toolbar_layout = view.findViewById(R.id.collapsing_toolbar_layout)
         image_view = view.findViewById(R.id.imageView)
         recyclerView = view.findViewById(R.id.recyclerView)
@@ -66,19 +70,69 @@ class AlbumDetailFragment : Fragment() {
         collapsing_toolbar_layout.title = model?.title
 
         // Load the image into the image view using Glide
-        Glide.with(this).load(model?.cover).placeholder(R.drawable.music_logo)
-            .error(R.drawable.music_logo).into(image_view)
+        Glide
+            .with(this)
+            .load(model?.cover)
+            .placeholder(R.drawable.music_logo)
+            .error(R.drawable.music_logo)
+            .into(image_view)
 
 
         recyclerView.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
-        for(i in model?.tracks as ArrayList<MusicModel>)
-        {
-            adapter.add(MusicComponent(i))
-        }
+
+getData()
 
 
     }
+
+
+    private fun configureRows(list: AlbumModel) {
+        adapter.clear()
+        for(i in list.tracks?.data as ArrayList<MusicModel>)
+        {
+            adapter.add(MusicComponent(i).apply {
+                this.fragment=this@AlbumDetailFragment
+            })
+        }
+        }
+
+
+
+    fun getData(){
+
+        adapter.isLoading = true
+        var call = RetrofitClient.retrofitInterface(context).getAlbum(model?.id)
+        call.enqueue(
+            RetrofitCallback(
+                this.requireContext(),
+                object : Callback<AlbumModel?> {
+
+                    override fun onResponse(
+                        call: Call<AlbumModel?>,
+                        response: Response<AlbumModel?>
+                    ) {
+                        if (response.code() == 200) {
+                            adapter.isLoading = false
+                            configureRows(response.body()!!)
+                        }
+                    }
+
+                    override fun onFailure(
+                        call: Call<AlbumModel?>,
+                        t: Throwable
+                    ) {
+                        Toast.makeText(
+                            this@AlbumDetailFragment.requireContext(),
+                            t.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                })
+        )
+    }
+
 
 }

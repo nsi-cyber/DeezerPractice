@@ -41,3 +41,8 @@ class MusicModel : Serializable {
 
 }
 
+class ArrayMusicModel : Serializable {
+    @SerializedName("data")
+    var data: ArrayList<MusicModel> = arrayListOf()
+}
+

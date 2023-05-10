@@ -49,7 +49,7 @@ class MusicComponent(model: MusicModel) : Item<ViewHolder, MusicModel>(model) {
 
 
     companion object {
-        const val layout = R.layout.c_music
+         var layout = R.layout.c_music
 
     }
 }

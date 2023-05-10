@@ -5,10 +5,12 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ace1ofspades.recyclerview.GroupAdapter
 import com.ace1ofspades.recyclerview.items.Item
+import com.ace1ofspades.recyclerview.scrollListeners.ItemOffsetDecoration
 import com.ace1ofspades.recyclerview.viewHolders.ViewHolder
 import com.google.gson.annotations.SerializedName
 import com.nsicyber.deezerpractice.R
@@ -39,6 +41,8 @@ class SearchListComponent(model: List<MusicModel>) : Item<ViewHolder, List<Music
         recyclerView.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(ItemOffsetDecoration(14))
+
         for(i in model!!)
         {
             adapter.add(MusicComponent(i))
@@ -48,7 +52,7 @@ class SearchListComponent(model: List<MusicModel>) : Item<ViewHolder, List<Music
 
 
     companion object {
-        const val layout = R.layout.c_search_list
+         var layout = R.layout.c_search_list
 
     }
 }

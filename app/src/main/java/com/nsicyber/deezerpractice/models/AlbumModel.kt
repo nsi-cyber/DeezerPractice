@@ -29,7 +29,7 @@ class AlbumModel : Serializable {
     @SerializedName("genre_id")
     var genreId: Int? = null
     @SerializedName("genres")
-    var genres: ArrayGenreModel? = ArrayGenreModel()
+    var genres: ArrayGenreModel? = null
     @SerializedName("label")
     var label: String? = null
     @SerializedName("nb_tracks")
@@ -55,11 +55,11 @@ class AlbumModel : Serializable {
     @SerializedName("contributors")
     var contributors: ArrayList<ArtistModel> = arrayListOf()
     @SerializedName("artist")
-    var artist: ArtistModel? = ArtistModel()
+    var artist: ArtistModel? = null
     @SerializedName("type")
     var type: String? = null
     @SerializedName("tracks")
-    var tracks: MusicModel? = MusicModel()
+    var tracks: ArrayMusicModel? = null
 
 }
 

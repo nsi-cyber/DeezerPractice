@@ -43,6 +43,7 @@ class ArtistDetailFragment : Fragment() {
     var adapter = GroupAdapter<ViewHolder>()
 
     var model: ArtistModel? = ArtistModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -60,6 +61,7 @@ class ArtistDetailFragment : Fragment() {
         arguments?.let {
             model = Parser.parse(it.getSerializable("data"))
         }
+
         return view
 
     }
@@ -71,16 +73,16 @@ class ArtistDetailFragment : Fragment() {
         collapsing_toolbar_layout.title = model?.name
 
         // Load the image into the image view using Glide
-        Glide.with(this).load(model?.picture).placeholder(R.drawable.music_logo)
-            .error(R.drawable.music_logo).into(image_view)
+        Glide.with(this)
+            .load(model?.picture)
+            .placeholder(R.drawable.music_logo)
+            .error(R.drawable.music_logo)
+            .into(image_view)
 
         recyclerView.layoutManager =
             GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(ItemOffsetDecoration(14))
-
-
-
         getData(model?.id)
 
 
@@ -88,16 +90,18 @@ class ArtistDetailFragment : Fragment() {
 
     fun configureRows(list: List<AlbumModel>) {
         adapter.clear()
+
         for (i in list) {
-            adapter.add(AlbumComponent(i))
+            adapter.add(AlbumComponent(i).apply {
+                this.fragment=this@ArtistDetailFragment
+
+            })
         }
     }
 
     fun getData(id: String?) {
-adapter.isLoading=true
+        adapter.isLoading = true
         var call = RetrofitClient.retrofitInterface(context).getArtistAlbums(id)
-
-
         call.enqueue(
             RetrofitCallback(
                 this@ArtistDetailFragment.requireContext(),
@@ -108,7 +112,7 @@ adapter.isLoading=true
                         response: Response<ArrayAlbumModel?>
                     ) {
                         if (response.code() == 200) {
-                            adapter.isLoading=false
+                            adapter.isLoading = false
                             configureRows(response.body()?.data as List<AlbumModel>)
                         }
                     }
@@ -121,8 +125,7 @@ adapter.isLoading=true
                             this@ArtistDetailFragment.requireContext(),
                             t.message,
                             Toast.LENGTH_SHORT
-                        )
-                            .show()
+                        ).show()
                     }
 
                 })

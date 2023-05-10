@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/categoryFragment">
+
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.nsicyber.deezerpractice.ui.AlbumDetailFragment"
+        android:label="AlbumDetailFragment" />
+    <fragment
+        android:id="@+id/artistDetailFragment"
+        android:name="com.nsicyber.deezerpractice.ui.ArtistDetailFragment"
+        android:label="ArtistDetailFragment" />
+    <fragment
+        android:id="@+id/artistListFragment"
+        android:name="com.nsicyber.deezerpractice.ui.ArtistListFragment"
+        android:label="ArtistListFragment" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.nsicyber.deezerpractice.ui.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/likesFragment"
+        android:name="com.nsicyber.deezerpractice.ui.LikesFragment"
+        android:label="fragment_likes"
+        tools:layout="@layout/fragment_likes" />
+</navigation>

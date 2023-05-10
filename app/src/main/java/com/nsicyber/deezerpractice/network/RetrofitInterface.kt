@@ -1,6 +1,7 @@
 package com.nsicyber.deezerpractice.network
 
 
+import com.nsicyber.deezerpractice.models.AlbumModel
 import com.nsicyber.deezerpractice.models.ArrayAlbumModel
 import com.nsicyber.deezerpractice.models.ArrayArtistModel
 import com.nsicyber.deezerpractice.models.ArrayGenreModel
@@ -26,7 +27,7 @@ interface RetrofitInterface {
     @GET("/album/{albumId}")
     fun getAlbum(
         @Path(value = "albumId") albumId: String?
-    ): Call<ArrayAlbumModel?>
+    ): Call<AlbumModel?>
 
 
 }

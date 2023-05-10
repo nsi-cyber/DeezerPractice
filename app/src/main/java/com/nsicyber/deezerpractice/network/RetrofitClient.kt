@@ -19,7 +19,7 @@ object RetrofitClient {
             return BASE_URL
         }
 
-    fun retrofitInterface(context: Context?):RetrofitInterface {
+    fun retrofitInterface(context: Context?): RetrofitInterface {
         return getApiClient(context).create(RetrofitInterface::class.java)
     }
 
@@ -38,7 +38,6 @@ object RetrofitClient {
             .build()
 
         return retrofit!!
-
 
 
     }

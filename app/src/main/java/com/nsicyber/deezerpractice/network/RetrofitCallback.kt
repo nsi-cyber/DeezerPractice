@@ -2,9 +2,13 @@ package com.nsicyber.deezerpractice.network
 
 import android.content.Context
 import android.widget.Toast
+import com.nsicyber.deezerpractice.PreferencesHelper
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.IOException
-
-
+import java.nio.Buffer
 
 
 class RetrofitCallback<T> : Callback<T> {
@@ -49,7 +53,7 @@ class RetrofitCallback<T> : Callback<T> {
             Toast.makeText(
                 mContext,
                 response.errorBody()
-                    .toString() + response.code(), //mContext.getString(R.string.hata_olustu_lutfen_tekrar_deneyiniz) + response.code(),
+                    .toString() + response.code(),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -58,10 +62,6 @@ class RetrofitCallback<T> : Callback<T> {
     override fun onFailure(call: Call<T>, t: Throwable) {
         println("error")
         println(t.message)
-        if (!Utils.checkInternet(mContext)) {
-            Toast.makeText(mContext, t.message, Toast.LENGTH_LONG).show()
-            return
-        }
         //Alert Here
         mCallback.onFailure(call, t)
     }
@@ -74,7 +74,7 @@ class RetrofitCallback<T> : Callback<T> {
         private const val TAG = "CustomRetrofitCallback"
         private fun bodyToString(request: RequestBody?): String {
             return try {
-                val buffer = Buffer()
+                val buffer = okio.Buffer()
                 request!!.writeTo(buffer)
                 buffer.readUtf8()
             } catch (e: IOException) {

@@ -5,23 +5,32 @@ import java.io.Serializable
 
 class ArtistModel : Serializable {
 
-    @SerializedName("id"             ) var id            : String?  = null
-    @SerializedName("name"           ) var name          : String?  = null
-    @SerializedName("picture"        ) var picture       : String?  = null
-    @SerializedName("picture_small"  ) var pictureSmall  : String?  = null
-    @SerializedName("picture_medium" ) var pictureMedium : String?  = null
-    @SerializedName("picture_big"    ) var pictureBig    : String?  = null
-    @SerializedName("picture_xl"     ) var pictureXl     : String?  = null
-    @SerializedName("radio"          ) var radio         : Boolean? = null
-    @SerializedName("tracklist"      ) var tracklist     : String?  = null
-    @SerializedName("type"           ) var type          : String?  = null
-
-
+    @SerializedName("id")
+    var id: String? = null
+    @SerializedName("name")
+    var name: String? = null
+    @SerializedName("picture")
+    var picture: String? = null
+    @SerializedName("picture_small")
+    var pictureSmall: String? = null
+    @SerializedName("picture_medium")
+    var pictureMedium: String? = null
+    @SerializedName("picture_big")
+    var pictureBig: String? = null
+    @SerializedName("picture_xl")
+    var pictureXl: String? = null
+    @SerializedName("radio")
+    var radio: Boolean? = null
+    @SerializedName("tracklist")
+    var tracklist: String? = null
+    @SerializedName("type")
+    var type: String? = null
 
 
 }
 
 
-class ArrayArtistModel:Serializable {
-    @SerializedName("data" ) var data : ArrayList<ArtistModel> = arrayListOf()
+class ArrayArtistModel : Serializable {
+    @SerializedName("data")
+    var data: ArrayList<ArtistModel> = arrayListOf()
 }

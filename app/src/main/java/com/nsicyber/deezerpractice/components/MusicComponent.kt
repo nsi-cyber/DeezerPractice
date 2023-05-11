@@ -20,7 +20,6 @@ class MusicComponent(model: MusicModel) : Item<ViewHolder, MusicModel>(model) {
     // ViewObjects
     lateinit var image: ShapeableImageView
     lateinit var musicTitle: TextView
-    lateinit var albumTitle: TextView
     lateinit var artistTitle: TextView
     lateinit var length: TextView
     lateinit var likeButton: ImageButton
@@ -31,7 +30,6 @@ class MusicComponent(model: MusicModel) : Item<ViewHolder, MusicModel>(model) {
         super.initialize()
         image = findViewById(R.id.imageView)
         musicTitle = findViewById(R.id.musicText)
-        albumTitle = findViewById(R.id.albumText)
         artistTitle = findViewById(R.id.artistText)
         length = findViewById(R.id.lengthText)
         likeButton = findViewById(R.id.likeButton)
@@ -42,7 +40,6 @@ class MusicComponent(model: MusicModel) : Item<ViewHolder, MusicModel>(model) {
 
         image.loadUrlRadius(model?.album?.cover, 12)
         musicTitle.text = model?.title
-        albumTitle.text = model?.album?.title
         artistTitle.text = model?.artist?.name
         length.text = formatTime(model?.duration)
     }

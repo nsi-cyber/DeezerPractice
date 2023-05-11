@@ -13,6 +13,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.nsicyber.deezerpractice.R
 import com.nsicyber.deezerpractice.enums.Fragments
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class Utils {
 }
@@ -79,4 +81,11 @@ fun handleClick(fragment: Fragment?, destinationFragment: Int, data: Map<*,*>) {
         navOpt
     )
 
+}
+
+fun convertDate(dateString: String?): String {
+    val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("d MMMM, yyyy", Locale.getDefault())
+    val date = inputFormat.parse(dateString)
+    return outputFormat.format(date)
 }

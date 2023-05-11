@@ -11,6 +11,7 @@ import com.nsicyber.deezerpractice.models.MusicModel
 import com.nsicyber.deezerpractice.ui.AlbumDetailFragment
 import com.nsicyber.deezerpractice.ui.ArtistListFragment
 import com.nsicyber.deezerpractice.utils.Parser
+import com.nsicyber.deezerpractice.utils.convertDate
 import com.nsicyber.deezerpractice.utils.formatTime
 import com.nsicyber.deezerpractice.utils.handleClick
 import com.nsicyber.deezerpractice.utils.loadUrlRadius
@@ -37,7 +38,7 @@ class AlbumComponent(model: AlbumModel) : Item<ViewHolder, AlbumModel>(model) {
 
         image.loadUrlRadius(model?.cover, 12)
         albumTitle.text = model?.title
-        releaseDate.text = model?.releaseDate
+        releaseDate.text = convertDate(model?.releaseDate)
 
         this.viewHolder?.itemView?.setOnClickListener {
             handleClick(this.fragment, R.id.albumDetailFragment, Parser.parse(model)!!)

@@ -2,8 +2,18 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.DeezerPractice" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+     <item name="colorPrimary">@color/red</item>
+
+
+
+
+
     </style>
 
     <style name="Theme.DeezerPractice" parent="Base.Theme.DeezerPractice" />
+
+    <style name="roundedImageView_8dp" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

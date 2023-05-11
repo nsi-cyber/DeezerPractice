@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,66 +17,60 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="0"
+            app:shapeAppearance="@style/roundedImageView_8dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/musicText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Şarkı adı"
-                android:textSize="16sp" />
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/albumText"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/musicText"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="Albüm"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_weight="0"
-                    android:gravity="center_vertical"
-                    android:text="-"
-                    android:textSize="12sp" />
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-medium"
+                    android:maxLines="1"
+                    android:text="Şarkı adı"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/artistText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="Sanatçı"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/lengthText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="süre"
-                    android:textSize="12sp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/lengthText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0"
+                android:gravity="center|right"
+                android:maxLines="1"
+                android:text="süre"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
         <ImageButton

@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         app:shapeAppearance="@style/roundedImageView_8dp"
-android:foreground="@drawable/fade_grad"
+android:foreground="@drawable/fade_grad_8dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView

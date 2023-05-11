@@ -9,7 +9,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         app:shapeAppearance="@style/roundedImageView_8dp"
-android:foreground="@drawable/fade_grad"
+android:foreground="@drawable/fade_grad_8dp"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />

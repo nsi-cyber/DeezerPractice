@@ -44,7 +44,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="Release"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
         </LinearLayout>
 

@@ -19,14 +19,30 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="24dp"
-                app:shapeAppearance="@style/roundedImageView_99dp"
-                tools:srcCompat="@tools:sample/avatars" />
+            <FrameLayout
+                android:id="@+id/frameLay"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center"
+                    app:shapeAppearance="@style/roundedImageView_99dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/playPauseView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:tint="@color/red"
+                    app:srcCompat="@drawable/ic_pause" />
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/songText"

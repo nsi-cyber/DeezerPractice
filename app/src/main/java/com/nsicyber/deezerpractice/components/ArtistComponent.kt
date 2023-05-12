@@ -31,7 +31,7 @@ class ArtistComponent(model: ArtistModel) : Item<ViewHolder, ArtistModel>(model)
     override fun configure() {
         super.configure()
 
-        image.loadUrlRadius(model?.picture, 12)
+        image.loadUrlRadius(model?.pictureXl, 12)
         artistText.text = model?.name
         this.viewHolder?.itemView?.setOnClickListener {
             handleClick(this.fragment, R.id.artistDetailFragment, Parser.parse(model)!!)

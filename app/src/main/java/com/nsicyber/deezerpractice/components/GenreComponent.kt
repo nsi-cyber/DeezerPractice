@@ -29,7 +29,7 @@ class GenreComponent (model: GenreModel) : Item<ViewHolder, GenreModel>(model) {
     override fun configure() {
         super.configure()
 
-        image.loadUrlRadius(model?.picture, 12)
+        image.loadUrlRadius(model?.pictureXl, 12)
         genreText.text = model?.name
         this.viewHolder?.itemView?.setOnClickListener {
             handleClick(this.fragment,R.id.artistListFragment, Parser.parse(model)!!)

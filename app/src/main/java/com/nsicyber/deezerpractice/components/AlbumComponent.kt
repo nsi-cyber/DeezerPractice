@@ -36,7 +36,7 @@ class AlbumComponent(model: AlbumModel) : Item<ViewHolder, AlbumModel>(model) {
     override fun configure() {
         super.configure()
 
-        image.loadUrlRadius(model?.cover, 12)
+        image.loadUrlRadius(model?.coverXl, 12)
         albumTitle.text = model?.title
         releaseDate.text = convertDate(model?.releaseDate)
 

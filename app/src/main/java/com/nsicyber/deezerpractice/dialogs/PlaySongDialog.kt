@@ -42,7 +42,7 @@ class PlaySongDialog {
 
         albumName.text=model.album?.title
         artistName.text=model.artist?.name
-        imageView.loadUrlRadius(model.album?.cover,1)
+        imageView.loadUrlRadius(model.album?.coverXl,1)
         songName.text=model.title
 mediaPlayer!!.reset()
         mediaPlayer?.apply {

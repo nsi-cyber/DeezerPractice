@@ -83,7 +83,7 @@ class ArtistDetailFragment : Fragment() {
 
         // Load the image into the image view using Glide
         Glide.with(this)
-            .load(model?.picture)
+            .load(model?.pictureXl)
             .placeholder(R.drawable.music_logo)
             .error(R.drawable.music_logo)
             .into(image_view)

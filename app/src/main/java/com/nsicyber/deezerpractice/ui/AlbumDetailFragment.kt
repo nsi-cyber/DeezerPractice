@@ -84,7 +84,7 @@ class AlbumDetailFragment : Fragment() {
         // Load the image into the image view using Glide
         Glide
             .with(this)
-            .load(model?.cover)
+            .load(model?.coverXl)
             .placeholder(R.drawable.music_logo)
             .error(R.drawable.music_logo)
             .into(image_view)

@@ -83,7 +83,7 @@ class ArtistListFragment : Fragment() {
         recyclerView.addItemDecoration(ItemOffsetDecoration(14))
 
         // Load the image into the image view using Glide
-        Glide.with(this).load(model?.picture).placeholder(R.drawable.music_logo)
+        Glide.with(this).load(model?.pictureXl).placeholder(R.drawable.music_logo)
             .error(R.drawable.music_logo).into(image_view)
 
         getData()

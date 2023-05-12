@@ -46,6 +46,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="12dp"
+        android:clipToPadding="false"
+
+        android:paddingTop="12dp"
         android:paddingRight="12dp"
         android:paddingBottom="12dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

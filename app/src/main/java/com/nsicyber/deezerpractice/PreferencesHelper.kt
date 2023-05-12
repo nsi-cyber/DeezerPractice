@@ -12,12 +12,13 @@ class PreferencesHelper constructor(context: Context) {
     private val mEditor: SharedPreferences.Editor
 
 
-
-
     var likedMusics: ArrayList<MusicModel>?
         get() {
             val type = object : TypeToken<ArrayList<MusicModel>>() {}.type
-            return Gson().fromJson(mPreferences.getString(LIKED_MUSICS, MusicModel().toString()), type)
+            return Gson().fromJson(
+                mPreferences.getString(LIKED_MUSICS, ArrayList<MusicModel>().toString()),
+                type
+            )
         }
         set(musicList) {
             val json = Gson().toJson(musicList)

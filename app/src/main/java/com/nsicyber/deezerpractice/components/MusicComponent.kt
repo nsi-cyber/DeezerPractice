@@ -49,43 +49,43 @@ class MusicComponent(model: MusicModel) : Item<ViewHolder, MusicModel>(model) {
         likeButton.setOnClickListener {
             if (isLiked) {
                 println(PreferencesHelper(context!!).likedMusics)
-var i=0
+                var i = 0
                 PreferencesHelper(context!!).likedMusics?.forEach {
                     if (model?.id == it.id) {
                         likeButton.setImageResource(R.drawable.ic_heart)
                         isLiked = false
 
-                        var arr= PreferencesHelper(context!!).likedMusics
+                        var arr = PreferencesHelper(context!!).likedMusics
                         arr!!.removeAt(i)
-                        PreferencesHelper(context!!).likedMusics=arr
+                        PreferencesHelper(context!!).likedMusics = arr
                     }
                     i++
                 }
-println(this.fragment!!::class.java.simpleName.toString())
-               if(this.fragment!!::class.java.simpleName.toString()=="LikesFragment")
-                   baseAdapter?.remove(this)
-
-
+                println(this.fragment!!::class.java.simpleName.toString())
+                if (this.fragment!!::class.java.simpleName.toString() == "LikesFragment")
+                    baseAdapter?.remove(this@MusicComponent)
 
 
             } else {
-                var arr= PreferencesHelper(context!!).likedMusics
+                var arr = PreferencesHelper(context!!).likedMusics
 
                 arr!!.add(model!!)
 
-                    PreferencesHelper(context!!).likedMusics=arr
+                PreferencesHelper(context!!).likedMusics = arr
                 println(PreferencesHelper(context!!).likedMusics)
                 likeButton.setImageResource(R.drawable.ic_heart_filled)
                 isLiked = true
             }
         }
 
-this.itemView?.setOnClickListener {
-    PlaySongDialog().start(context!!,
-        this@MusicComponent.fragment!!
-            .requireActivity(),model)
-    println("")
-}
+        this.itemView?.setOnClickListener {
+            PlaySongDialog().start(
+                context!!,
+                this@MusicComponent.fragment!!
+                    .requireActivity(), model
+            )
+            println("")
+        }
 
     }
 

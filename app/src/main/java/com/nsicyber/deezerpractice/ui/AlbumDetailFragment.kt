@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ace1ofspades.recyclerview.GroupAdapter
@@ -40,7 +43,8 @@ class AlbumDetailFragment : Fragment() {
     private lateinit var image_view: ImageView
     private lateinit var recyclerView: RecyclerView
     var adapter = GroupAdapter<ViewHolder>()
-
+    var listData:AlbumModel?=null
+    var isConfigured=false
     var model: AlbumModel? = AlbumModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +69,14 @@ class AlbumDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+            }
+            )
 
         // Set the title of the collapsing toolbar
         collapsing_toolbar_layout.title = model?.title
@@ -114,8 +126,10 @@ getData()
                         response: Response<AlbumModel?>
                     ) {
                         if (response.code() == 200) {
+                            isConfigured=true
                             adapter.isLoading = false
-                            configureRows(response.body()!!)
+                            listData=response.body()
+                            configureRows(listData!!)
                         }
                     }
 
@@ -133,6 +147,13 @@ getData()
                 })
         )
     }
+
+    override fun onResume() {
+        super.onResume()
+        if(isConfigured==true)
+            configureRows(listData!!)
+    }
+
 
 
 }

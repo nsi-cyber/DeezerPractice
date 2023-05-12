@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +40,8 @@ class ArtistListFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     var adapter = GroupAdapter<ViewHolder>()
     var model: GenreModel? = GenreModel()
+    var listData:List<ArtistModel>?=null
+    var isConfigured=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -62,7 +66,14 @@ class ArtistListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+            }
+            )
         // Set the title of the collapsing toolbar
         collapsing_toolbar_layout.title = model?.name
 
@@ -103,8 +114,10 @@ class ArtistListFragment : Fragment() {
                         response: Response<ArrayArtistModel?>
                     ) {
                         if (response.code() == 200) {
+                            isConfigured=true
                             adapter.isLoading = false
-                            configureRows(response.body()?.data as List<ArtistModel>)
+                            listData=response.body()?.data as List<ArtistModel>
+                            configureRows(listData!!)
                         }
                     }
 
@@ -122,5 +135,7 @@ class ArtistListFragment : Fragment() {
                 })
         )
     }
+
+
 
 }

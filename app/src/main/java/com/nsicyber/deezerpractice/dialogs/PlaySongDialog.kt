@@ -4,46 +4,35 @@ import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
 import android.media.AudioAttributes
-import android.media.AudioManager
 import android.media.MediaPlayer
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.animation.AnimationUtils
-import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.net.toUri
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.nsicyber.deezerpractice.R
-import com.nsicyber.deezerpractice.models.ArrayMusicModel
 import com.nsicyber.deezerpractice.models.MusicModel
 import com.nsicyber.deezerpractice.utils.loadUrlRadius
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class PlaySongDialog {
-    var anim: ObjectAnimator? = null
-    var mediaPlayer: MediaPlayer? = null
-    lateinit var songName: TextView
-    lateinit var artistName: TextView
-    lateinit var albumName: TextView
+    private var anim: ObjectAnimator? = null
+    private var mediaPlayer: MediaPlayer? = null
+    private lateinit var songName: TextView
+    private lateinit var artistName: TextView
+    private lateinit var albumName: TextView
     lateinit var imageView: ImageView
-    lateinit var playPauseView: ImageView
-    lateinit var frameLay: FrameLayout
-    var isPlaying: Boolean = false
+    private lateinit var playPauseView: ImageView
+    private lateinit var frameLay: FrameLayout
+    private var isPlaying: Boolean = false
 
-    fun close() {
+    private fun close() {
         mediaPlayer?.reset()
         mediaPlayer?.release()
         imageView.clearAnimation()
     }
 
-    fun playSound(context: Context, model: MusicModel, completion: () -> Unit) {
+    private fun playSound(context: Context, model: MusicModel, completion: () -> Unit) {
         albumName.text = model.album?.title
         artistName.text = model.artist?.name
         imageView.loadUrlRadius(model.album?.coverXl, 1)
@@ -64,9 +53,9 @@ class PlaySongDialog {
 
 
         anim = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 360f)
-        anim?.setDuration(5000)
-        anim?.setRepeatCount(6)
-        anim?.setRepeatMode(ObjectAnimator.RESTART);
+        anim?.duration = 5000
+        anim?.repeatCount = 6
+        anim?.repeatMode = ObjectAnimator.RESTART;
 
 
         anim?.start()
@@ -124,7 +113,7 @@ class PlaySongDialog {
         }
     }
 
-    fun playNextSong(
+    private fun playNextSong(
         context: Context,
         musicList: List<MusicModel>,
         iterator: Int,

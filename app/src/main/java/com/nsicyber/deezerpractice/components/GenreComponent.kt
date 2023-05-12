@@ -6,7 +6,6 @@ import com.ace1ofspades.recyclerview.viewHolders.ViewHolder
 import com.google.android.material.imageview.ShapeableImageView
 import com.nsicyber.deezerpractice.R
 import com.nsicyber.deezerpractice.models.GenreModel
-import com.nsicyber.deezerpractice.ui.ArtistListFragment
 import com.nsicyber.deezerpractice.utils.Parser
 import com.nsicyber.deezerpractice.utils.handleClick
 import com.nsicyber.deezerpractice.utils.loadUrlRadius
@@ -14,8 +13,8 @@ import com.nsicyber.deezerpractice.utils.loadUrlRadius
 class GenreComponent (model: GenreModel) : Item<ViewHolder, GenreModel>(model) {
 
     // ViewObjects
-    lateinit var image: ShapeableImageView
-    lateinit var genreText: TextView
+    private lateinit var image: ShapeableImageView
+    private lateinit var genreText: TextView
 
     override fun getLayout(): Int = layout
 

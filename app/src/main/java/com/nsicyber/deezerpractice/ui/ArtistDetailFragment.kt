@@ -10,7 +10,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ace1ofspades.recyclerview.GroupAdapter
 import com.ace1ofspades.recyclerview.scrollListeners.ItemOffsetDecoration
@@ -19,11 +18,9 @@ import com.bumptech.glide.Glide
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.nsicyber.deezerpractice.R
 import com.nsicyber.deezerpractice.components.AlbumComponent
-import com.nsicyber.deezerpractice.components.MusicComponent
 import com.nsicyber.deezerpractice.models.AlbumModel
 import com.nsicyber.deezerpractice.models.ArrayAlbumModel
 import com.nsicyber.deezerpractice.models.ArtistModel
-import com.nsicyber.deezerpractice.models.MusicModel
 import com.nsicyber.deezerpractice.network.RetrofitCallback
 import com.nsicyber.deezerpractice.network.RetrofitClient
 import com.nsicyber.deezerpractice.utils.Parser

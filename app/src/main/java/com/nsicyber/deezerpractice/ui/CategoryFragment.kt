@@ -12,10 +12,7 @@ import com.ace1ofspades.recyclerview.GroupAdapter
 import com.ace1ofspades.recyclerview.scrollListeners.ItemOffsetDecoration
 import com.ace1ofspades.recyclerview.viewHolders.ViewHolder
 import com.nsicyber.deezerpractice.R
-import com.nsicyber.deezerpractice.components.AlbumComponent
 import com.nsicyber.deezerpractice.components.GenreComponent
-import com.nsicyber.deezerpractice.models.AlbumModel
-import com.nsicyber.deezerpractice.models.ArrayAlbumModel
 import com.nsicyber.deezerpractice.models.ArrayGenreModel
 import com.nsicyber.deezerpractice.models.GenreModel
 import com.nsicyber.deezerpractice.network.RetrofitCallback

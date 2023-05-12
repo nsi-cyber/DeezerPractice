@@ -1,27 +1,22 @@
 package com.nsicyber.deezerpractice.components
 
-import android.widget.ImageButton
 import android.widget.TextView
 import com.ace1ofspades.recyclerview.items.Item
 import com.ace1ofspades.recyclerview.viewHolders.ViewHolder
 import com.google.android.material.imageview.ShapeableImageView
 import com.nsicyber.deezerpractice.R
 import com.nsicyber.deezerpractice.models.AlbumModel
-import com.nsicyber.deezerpractice.models.MusicModel
-import com.nsicyber.deezerpractice.ui.AlbumDetailFragment
-import com.nsicyber.deezerpractice.ui.ArtistListFragment
 import com.nsicyber.deezerpractice.utils.Parser
 import com.nsicyber.deezerpractice.utils.convertDate
-import com.nsicyber.deezerpractice.utils.formatTime
 import com.nsicyber.deezerpractice.utils.handleClick
 import com.nsicyber.deezerpractice.utils.loadUrlRadius
 
 class AlbumComponent(model: AlbumModel) : Item<ViewHolder, AlbumModel>(model) {
 
     // ViewObjects
-    lateinit var image: ShapeableImageView
-    lateinit var albumTitle: TextView
-    lateinit var releaseDate: TextView
+    private lateinit var image: ShapeableImageView
+    private lateinit var albumTitle: TextView
+    private lateinit var releaseDate: TextView
 
     override fun getLayout(): Int = layout
 

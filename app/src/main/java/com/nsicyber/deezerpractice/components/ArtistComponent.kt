@@ -6,9 +6,6 @@ import com.ace1ofspades.recyclerview.viewHolders.ViewHolder
 import com.google.android.material.imageview.ShapeableImageView
 import com.nsicyber.deezerpractice.R
 import com.nsicyber.deezerpractice.models.ArtistModel
-import com.nsicyber.deezerpractice.models.GenreModel
-import com.nsicyber.deezerpractice.ui.ArtistDetailFragment
-import com.nsicyber.deezerpractice.ui.ArtistListFragment
 import com.nsicyber.deezerpractice.utils.Parser
 import com.nsicyber.deezerpractice.utils.handleClick
 import com.nsicyber.deezerpractice.utils.loadUrlRadius
@@ -16,8 +13,8 @@ import com.nsicyber.deezerpractice.utils.loadUrlRadius
 class ArtistComponent(model: ArtistModel) : Item<ViewHolder, ArtistModel>(model) {
 
     // ViewObjects
-    lateinit var image: ShapeableImageView
-    lateinit var artistText: TextView
+    private lateinit var image: ShapeableImageView
+    private lateinit var artistText: TextView
 
     override fun getLayout(): Int = layout
 

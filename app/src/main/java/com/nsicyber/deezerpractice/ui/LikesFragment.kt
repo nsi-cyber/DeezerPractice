@@ -11,9 +11,7 @@ import com.ace1ofspades.recyclerview.GroupAdapter
 import com.ace1ofspades.recyclerview.viewHolders.ViewHolder
 import com.nsicyber.deezerpractice.PreferencesHelper
 import com.nsicyber.deezerpractice.R
-import com.nsicyber.deezerpractice.components.MusicComponent
 import com.nsicyber.deezerpractice.components.SearchListComponent
-import com.nsicyber.deezerpractice.models.AlbumModel
 import com.nsicyber.deezerpractice.models.MusicModel
 
 

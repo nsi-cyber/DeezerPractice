@@ -1,10 +1,9 @@
 package com.nsicyber.deezerpractice
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.nsicyber.deezerpractice.databinding.ActivityMainBinding
 import com.nsicyber.deezerpractice.ui.LikesFragment

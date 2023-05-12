@@ -11,7 +11,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ace1ofspades.recyclerview.GroupAdapter
 import com.ace1ofspades.recyclerview.scrollListeners.ItemOffsetDecoration
@@ -19,13 +18,8 @@ import com.ace1ofspades.recyclerview.viewHolders.ViewHolder
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.nsicyber.deezerpractice.R
-import com.nsicyber.deezerpractice.components.AlbumComponent
 import com.nsicyber.deezerpractice.components.ArtistComponent
-import com.nsicyber.deezerpractice.components.GenreComponent
-import com.nsicyber.deezerpractice.models.AlbumModel
-import com.nsicyber.deezerpractice.models.ArrayAlbumModel
 import com.nsicyber.deezerpractice.models.ArrayArtistModel
-import com.nsicyber.deezerpractice.models.ArrayGenreModel
 import com.nsicyber.deezerpractice.models.ArtistModel
 import com.nsicyber.deezerpractice.models.GenreModel
 import com.nsicyber.deezerpractice.network.RetrofitCallback
@@ -34,6 +28,7 @@ import com.nsicyber.deezerpractice.utils.Parser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 class ArtistListFragment : Fragment() {
     private lateinit var collapsing_toolbar_layout: CollapsingToolbarLayout
     private lateinit var image_view: ImageView

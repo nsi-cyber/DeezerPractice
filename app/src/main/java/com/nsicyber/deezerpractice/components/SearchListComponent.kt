@@ -2,33 +2,24 @@ package com.nsicyber.deezerpractice.components
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ace1ofspades.recyclerview.GroupAdapter
 import com.ace1ofspades.recyclerview.items.Item
-import com.ace1ofspades.recyclerview.scrollListeners.ItemOffsetDecoration
 import com.ace1ofspades.recyclerview.viewHolders.ViewHolder
-import com.google.gson.annotations.SerializedName
-import com.nsicyber.deezerpractice.PreferencesHelper
 import com.nsicyber.deezerpractice.R
 import com.nsicyber.deezerpractice.dialogs.PlaySongDialog
 import com.nsicyber.deezerpractice.models.MusicModel
-import com.nsicyber.deezerpractice.utils.Parser
 import java.util.Locale
 
 class SearchListComponent(model: List<MusicModel>) : Item<ViewHolder, List<MusicModel>>(model) {
 
     // ViewObjects
-    lateinit var searchText: EditText
-    lateinit var playButton: CardView
-    lateinit var mixButton: CardView
+    private lateinit var searchText: EditText
+    private lateinit var playButton: CardView
+    private lateinit var mixButton: CardView
     lateinit var recyclerView: RecyclerView
     var adapter = GroupAdapter<ViewHolder>()
 

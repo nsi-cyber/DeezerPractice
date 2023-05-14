@@ -9,6 +9,7 @@ import com.nsicyber.deezerpractice.PreferencesHelper
 import com.nsicyber.deezerpractice.R
 import com.nsicyber.deezerpractice.dialogs.PlaySongDialog
 import com.nsicyber.deezerpractice.models.MusicModel
+import com.nsicyber.deezerpractice.utils.contains
 import com.nsicyber.deezerpractice.utils.formatTime
 import com.nsicyber.deezerpractice.utils.loadUrlRadius
 
@@ -34,18 +35,14 @@ class MusicComponent(model: MusicModel) : Item<ViewHolder, MusicModel>(model) {
 
     override fun configure() {
         super.configure()
-        var isLiked = false
+        var isLiked = PreferencesHelper(context!!).likedMusics?.contains { (it as? MusicModel)?.id == model?.id } ?: false
         image.loadUrlRadius(model?.album?.cover, 12)
         musicTitle.text = model?.title
         artistTitle.text = model?.artist?.name
         length.text = formatTime(model?.duration)
-        PreferencesHelper(context!!).likedMusics?.forEach {
-            if (model?.id == it.id) {
-                likeButton.setImageResource(R.drawable.ic_heart_filled)
-                isLiked = true
-            }
-        }
 
+        val imageName = if (isLiked) R.drawable.ic_heart_filled else R.drawable.ic_heart
+        likeButton.setImageResource(imageName)
         likeButton.setOnClickListener {
             if (isLiked) {
                 println(PreferencesHelper(context!!).likedMusics)

@@ -16,6 +16,15 @@ import java.util.Locale
 class Utils {
 }
 
+fun ArrayList<*>.contains(item:(item:Any)->Boolean):Boolean {
+    this.forEach {
+        if (item(it)) {
+            return true
+        }
+    }
+    return false
+}
+
 fun ImageView.loadUrlRadius(url: String?, radius: Int) {
 
 

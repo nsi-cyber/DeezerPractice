@@ -23,12 +23,12 @@ import java.util.Locale
 
 class LikesFragment : Fragment() {
     var adapter = GroupAdapter<ViewHolder>()
+
     // ViewObjects
     private lateinit var searchText: EditText
     private lateinit var playButton: CardView
     private lateinit var mixButton: CardView
     lateinit var recyclerView: RecyclerView
-    var adapterNested = GroupAdapter<ViewHolder>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +37,7 @@ class LikesFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_likes, container, false)
 
-       // recyclerView = view.findViewById(R.id.recyclerView)
+        // recyclerView = view.findViewById(R.id.recyclerView)
 
         return view
     }
@@ -48,32 +48,47 @@ class LikesFragment : Fragment() {
         playButton = view.findViewById(R.id.playButton)
         mixButton = view.findViewById(R.id.mixButton)
         recyclerView = view.findViewById(R.id.recyclerView)
-    configure()
+        configure()
 
     }
 
     fun configure() {
-        var list = PreferencesHelper(requireContext()).likedMusics as ArrayList<MusicModel>
 
         recyclerView.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.isNestedScrollingEnabled = true
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
+   configureRows()
 
-        for(i in list)
-        {
+
+    }
+
+    fun configureRows(){
+        var list = PreferencesHelper(requireContext()).likedMusics as ArrayList<MusicModel>
+        adapter.clear()
+        for (i in list) {
             adapter.add(MusicComponent(i).apply {
-                fragment=this@LikesFragment
-                baseAdapter=adapter
+                fragment = this@LikesFragment
+                baseAdapter = adapter
             })
         }
-        var playDialog= PlaySongDialog()
+        var playDialog = PlaySongDialog()
         playButton.setOnClickListener {
-            playDialog.start(requireContext(),requireActivity(), musicList = list, isShuffle = false)
+            playDialog.start(
+                requireContext(),
+                requireActivity(),
+                musicList = list,
+                isShuffle = false
+            )
         }
         mixButton.setOnClickListener {
-            playDialog.start(requireContext(),requireActivity(), musicList = list, isShuffle = true)
+            playDialog.start(
+                requireContext(),
+                requireActivity(),
+                musicList = list,
+                isShuffle = true
+            )
         }
 
         searchText.addTextChangedListener(object : TextWatcher {
@@ -84,16 +99,19 @@ class LikesFragment : Fragment() {
                 start: Int,
                 count: Int,
                 after: Int
-            ) {}
+            ) {
+            }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val filterText = s.toString().toLowerCase(Locale.getDefault())
                 adapter.clear()
                 for (item in list) {
                     if (filterText.isEmpty() ||
-                        item.album?.title?.toLowerCase(Locale.getDefault())!!.contains(filterText) ||
+                        item.album?.title?.toLowerCase(Locale.getDefault())!!
+                            .contains(filterText) ||
                         item.title?.toLowerCase(Locale.getDefault())!!.contains(filterText) ||
-                        item.artist?.name?.toLowerCase(Locale.getDefault())!!.contains(filterText)) {
+                        item.artist?.name?.toLowerCase(Locale.getDefault())!!.contains(filterText)
+                    ) {
                         adapter.add(MusicComponent(item).apply {
                             this.fragment = fragment
                             this.baseAdapter = adapter
@@ -103,13 +121,11 @@ class LikesFragment : Fragment() {
             }
         })
 
-
-
     }
 
     override fun onResume() {
         super.onResume()
-       configure()
+        configureRows()
     }
 
 

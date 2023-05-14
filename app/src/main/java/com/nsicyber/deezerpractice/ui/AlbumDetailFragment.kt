@@ -33,8 +33,8 @@ class AlbumDetailFragment : Fragment() {
     private lateinit var image_view: ImageView
     private lateinit var recyclerView: RecyclerView
     var adapter = GroupAdapter<ViewHolder>()
-    var listData:AlbumModel?=null
-    var isConfigured=false
+    var listData: AlbumModel? = null
+    var isConfigured = false
     var model: AlbumModel? = AlbumModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +84,7 @@ class AlbumDetailFragment : Fragment() {
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
 
-getData()
+        getData()
 
 
     }
@@ -92,17 +92,15 @@ getData()
 
     private fun configureRows(list: AlbumModel) {
         adapter.clear()
-        for(i in list.tracks?.data as ArrayList<MusicModel>)
-        {
+        for (i in list.tracks?.data as ArrayList<MusicModel>) {
             adapter.add(MusicComponent(i).apply {
-                this.fragment=this@AlbumDetailFragment
+                this.fragment = this@AlbumDetailFragment
             })
         }
-        }
+    }
 
 
-
-    fun getData(){
+    fun getData() {
 
         adapter.isLoading = true
         var call = RetrofitClient.retrofitInterface(context).getAlbum(model?.id)
@@ -116,9 +114,9 @@ getData()
                         response: Response<AlbumModel?>
                     ) {
                         if (response.code() == 200) {
-                            isConfigured=true
+                            isConfigured = true
                             adapter.isLoading = false
-                            listData=response.body()
+                            listData = response.body()
                             configureRows(listData!!)
                         }
                     }
@@ -140,10 +138,9 @@ getData()
 
     override fun onResume() {
         super.onResume()
-        if(isConfigured==true)
+        if (isConfigured == true)
             configureRows(listData!!)
     }
-
 
 
 }
